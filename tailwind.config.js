@@ -11,52 +11,52 @@ const config = {
     extend: {
 
       fontFamily: {
-        display: ["var(--font-display)", "Georgia", "serif"],
-        sans:    ["var(--font-sans)", "sans-serif"],
-        body:    ["var(--font-body)", "sans-serif"],
-        mono:    ["var(--font-mono)", "monospace"],
+        display: ["var(--font-display)", "Fraunces", "serif"],
+        sans: ["var(--font-sans)", "Cabinet Grotesk", "sans-serif"],
+        body: ["var(--font-body)", "DM Sans", "sans-serif"],
+        mono: ["var(--font-mono)", "JetBrains Mono", "monospace"],
       },
 
       fontSize: {
-        hero:    "var(--text-hero)",
+        hero: "var(--text-hero)",
         display: "var(--text-display)",
         heading: "var(--text-heading)",
-        title:   "var(--text-title)",
-        body:    "var(--text-body)",
-        small:   "var(--text-small)",
-        label:   "var(--text-label)",
+        title: "var(--text-title)",
+        body: "var(--text-body)",
+        small: "var(--text-small)",
+        label: "var(--text-label)",
       },
 
       colors: {
         bg: {
-          base:     "var(--color-bg-base)",
-          card:     "var(--color-bg-card)",
+          base: "var(--color-bg-base)",
+          card: "var(--color-bg-card)",
           elevated: "var(--color-bg-elevated)",
-          subtle:   "var(--color-bg-subtle)",
+          subtle: "var(--color-bg-subtle)",
         },
         accent: {
           gold: "var(--color-accent-gold)",
           glow: "var(--color-accent-glow)",
           teal: "var(--color-accent-teal)",
-          red:  "var(--color-accent-red)",
+          red: "var(--color-accent-red)",
         },
         tx: {
-          primary:   "var(--color-text-primary)",
+          primary: "var(--color-text-primary)",
           secondary: "var(--color-text-secondary)",
-          tertiary:  "var(--color-text-tertiary)",
+          tertiary: "var(--color-text-tertiary)",
         },
         border: {
           DEFAULT: "var(--color-border)",
-          hover:   "var(--color-border-hover)",
-          gold:    "var(--color-border-gold)",
+          hover: "var(--color-border-hover)",
+          gold: "var(--color-border-gold)",
         },
       },
 
       borderRadius: {
-        sm:   "var(--radius-sm)",
-        md:   "var(--radius-md)",
-        lg:   "var(--radius-lg)",
-        xl:   "var(--radius-xl)",
+        sm: "var(--radius-sm)",
+        md: "var(--radius-md)",
+        lg: "var(--radius-lg)",
+        xl: "var(--radius-xl)",
         full: "var(--radius-full)",
       },
 
@@ -67,7 +67,7 @@ const config = {
       },
 
       letterSpacing: {
-        hero:  "-0.03em",
+        hero: "-0.03em",
         tight: "-0.02em",
         label: "0.12em",
       },
