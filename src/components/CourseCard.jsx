@@ -7,7 +7,7 @@ import { RatingCounter } from './RatingCounter';
 const CourseCard = ({ course }) => {
 
     return (
-        <div className='p-5 hover:scale-103 hover:-translate-y-2 rounded-2xl h-120 relative overflow-hidden bg-gray-400 cursor-pointer group'>
+        <div className='p-5 hover:scale-101 hover:-translate-y-2 rounded-2xl h-120 relative overflow-hidden bg-gray-400 cursor-pointer group'>
             <div className="absolute z-10 inset-0 bg-linear-to-t from-black/80 via-black/40 to-transparent pointer-events-none" />
             <ImageSkeleton
                 src={course.image}
@@ -21,10 +21,10 @@ const CourseCard = ({ course }) => {
                     <p className='px-2.5 py-1  bg-[#2bd4bd] rounded-full'>{course.level}</p>
                 </div>
                 <div className='space-y-2.5'>
-                    <h4 className='text-xl font-semibold' style={{color: "white"}}>{course.title}</h4>
-                    <div className='flex flex-col gap-3 text-white text-small'>
+                    <h4 className='text-xl font-semibold' style={{ color: "white" }}>{course.title}</h4>
+                    <div className='flex flex-col gap-3 text-white text-small overflow-hidden'>
                         <div className='flex gap-3'>
-                            <div className='w-6 h-6 rounded-full relative overflow-hidden'>
+                            <div className='w-6 h-6 rounded-full relative overflow-hidden shadow-card'>
                                 <ImageSkeleton
                                     src={course.instructorImage}
                                     alt={course.instructor}
@@ -35,6 +35,13 @@ const CourseCard = ({ course }) => {
                             <p>{course.instructor}</p>
                             <hr className='h-4 border border-gray-600 ' />
                             <p className='flex gap-1 text-label '><Clock></Clock> {course.duration}h</p>
+                        </div>
+                        <div className="grid grid-rows-[0fr] group-hover:grid-rows-[1fr] ease-in-out">
+                            <div className="overflow-hidden">
+                                <p className='text-small text-white/90 leading-relaxed'>
+                                    {course.description}
+                                </p>
+                            </div>
                         </div>
                         <div className='flex justify-between'>
                             <RatingCounter rating={course.rating}></RatingCounter>
