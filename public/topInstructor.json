@@ -1,0 +1,30 @@
+[
+  {
+    "name": "Aarav Mehta",
+    "role": "Senior Engineer @ Vercel",
+    "rating": 4.9,
+    "courses": 12,
+    "instructor": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=400"
+  },
+  {
+    "name": "Dj Mahtab",
+    "role": "Design Lead @ Linear",
+    "rating": 4.8,
+    "courses": 8,
+    "instructor": "https://images.unsplash.com/photo-1463453091185-61582044d556?auto=format&fit=crop&q=80&w=400"
+  },
+  {
+    "name": "Dr. Hablu",
+    "role": "ML Researcher @ DeepMind",
+    "rating": 4.9,
+    "courses": 6,
+    "instructor": "https://images.unsplash.com/photo-1568602471122-7832951cc4c5?auto=format&fit=crop&q=80&w=400"
+  },
+  {
+    "name": "Diego Alvarez",
+    "role": "Motion Director @ Apple",
+    "rating": 4.9,
+    "courses": 9,
+    "instructor": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=400"
+  }
+]
