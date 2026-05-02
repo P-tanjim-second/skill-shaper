@@ -3,7 +3,7 @@ import localFont from "next/font/local";
 
 export const fraunces = Fraunces({
   subsets: ["latin"],
-  weight: ["400", "700", "800"],
+  weight: ["300" ,"400", "700", "800"],
   style: ["normal", "italic"],
   variable: "--font-display",
   display: "swap",
@@ -41,6 +41,10 @@ export const cabinetGrotesk = localFont({
     { 
       path: "../../../public/fonts/CabinetGrotesk-Bold.woff2",    
       weight: "700" 
+    },
+    { 
+      path: "../../../public/fonts/CabinetGrotesk-ExtraBold.woff2",    
+      weight: "800" 
     },
   ],
   variable: "--font-sans",

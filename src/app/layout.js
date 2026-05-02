@@ -21,7 +21,7 @@ export default function RootLayout({ children }) {
          h-full antialiased
       `}
     >
-      <body className="min-h-full flex flex-col">
+      <body className="min-h-full font-family-body flex flex-col">
         <Navbar></Navbar>
         {children}
         <Footer></Footer>

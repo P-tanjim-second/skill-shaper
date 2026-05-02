@@ -6,7 +6,7 @@
   --font-family-body: var(--font-body);
   --font-family-mono: var(--font-mono);
 
-  --text-hero: clamp(55px, 8vw, 96px);
+  --text-hero: clamp(52px, 8vw, 100px);
   --text-display: clamp(36px, 5vw, 64px);
   --text-heading: clamp(28px, 3vw, 32px);
   --text-title: clamp(20px, 2vw, 24px);

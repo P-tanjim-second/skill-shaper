@@ -15,12 +15,9 @@ const Navbar = () => {
             let isActive = pathName === tag.path
             return <li className="relative py-1 cursor-pointer group list-none" key={i}>
                 <Link href={tag.path} className='py-1'>
-                    {/* The Text */}
                     <span className={`${isActive ? 'text-accent-gold' : 'text-gray-300 group-hover:text-white'} transition-colors duration-300 text-small`}>
                         {tag.name}
                     </span>
-
-                    {/* The Complex Underline */}
                     <span className={`absolute bottom-0 left-1/2 ${isActive ? 'w-full' : 'w-0'} h-0.5 -translate-x-1/2 bg-amber-500 transition-all duration-300 ease-in-out group-hover:w-full`} />
                 </Link>
             </li>
@@ -36,7 +33,7 @@ const Navbar = () => {
                     </ul>
                 </div>
 
-                <div className={`font-sans logo absolute to-0% left-1/2 -translate-x-1/2 text-title font-bold`}> Skill<span className='text-accent-gold'>Sphere</span></div>
+                <div className={`font-family-mono logo absolute to-0% left-1/2 -translate-x-1/2 text-title font-bold`}> Skill<span className='text-accent-gold'>Sphere</span></div>
 
                 <div className='flex items-center gap-7 text-small'>
                     <button className='px-4  py-1.5 rounded-2xl border-[0.5] border-gray-700 hover:border-accent-gold hover:text-accent-gold cursor-pointer'>Login</button>
