@@ -7,7 +7,7 @@ import ThemeToggle from './ThemeToggle';
 const Navbar = () => {
     const linkTag = [
         { name: "Home", path: "/" },
-        { name: "Course", path: "/course" },
+        { name: "Course", path: "/courses" },
         { name: "My profile", path: "/profile" },
     ];
     const pathName = usePathname()

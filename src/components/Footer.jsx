@@ -6,7 +6,7 @@ export default function Footer() {
       
       <div className="h-px w-full bg-accent-gold opacity-50"></div>
 
-      <div className="max-w-6xl mx-auto px-8 py-12">
+      <div className="max-w-11/13 mx-auto px-8 py-12">
         <div className="flex flex-wrap justify-between gap-10">
           
           <div className="w-full md:w-64">

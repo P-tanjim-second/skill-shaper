@@ -120,7 +120,7 @@
     filter: brightness(1.08);
 }
 
-.hero-btn-primary:hover .hero-btn-arrow {
+.hero-btn-primary:hover .hero-btn-arrow, .course-view-btn:hover .hero-btn-arrow {
     transform: translateX(4px);
 }
 
