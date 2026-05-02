@@ -251,10 +251,7 @@ export default function NotFound() {
 
                         <Link href="/courses">
                             <button
-                                className="inline-flex items-center gap-2.5 px-6 py-3 rounded-full
-                         bg-bg-card border border-border text-tx-secondary font-sans font-medium
-                         hover:border-[rgba(240,165,0,0.3)] hover:text-tx-primary
-                         transition-all duration-200"
+                                className={"inline-flex items-center gap-2.5 px-6 py-3 rounded-full bg-bg-card border border-border text-tx-secondary font-sans font-medium hover:border-[rgba(240,165,0,0.3)] hover:text-tx-primary transition-all duration-200"}
                                 style={{ fontSize: '14px' }}
                             >
                                 Browse Courses
