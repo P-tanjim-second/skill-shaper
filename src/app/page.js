@@ -1,8 +1,11 @@
 import Hero from "@/components/Hero";
-import Image from "next/image";
+import Slider from "@/components/Slider";
 
 export default function HomePage() {
   return (
-    <Hero></Hero>
+    <>
+      <Hero></Hero>
+      <Slider></Slider>
+    </>
   )
 }

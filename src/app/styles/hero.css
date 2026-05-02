@@ -9,7 +9,7 @@
     width: 560px;
     height: 560px;
     top: -25%;
-    left: -12%;
+    left: -15%;
     background: radial-gradient(circle, rgba(240, 165, 0, 0.3), transparent 100%);
     animation: floatA 20s ease-in-out infinite alternate;
 }
@@ -17,7 +17,7 @@
 .hero-orb-teal {
     width: 500px;
     height: 500px;
-    top: 20%;
+    top: 10%;
     right: -15%;
     background: radial-gradient(circle, rgba(45, 212, 191, 0.3), transparent 100%);
     animation: floatB 26s ease-in-out infinite alternate;
@@ -184,11 +184,11 @@
 }
 
 [data-theme="light"] .hero-orb-amber {
-    background: radial-gradient(circle, rgba(240, 165, 0, 0.12), transparent 70%);
+    background: radial-gradient(circle, rgba(240, 165, 0, 0.4), transparent 100%);
 }
 
 [data-theme="light"] .hero-orb-teal {
-    background: radial-gradient(circle, rgba(45, 212, 191, 0.09), transparent 70%);
+    background: radial-gradient(circle, rgba(45, 212, 191, 0.4), transparent 100%);
 }
 
 [data-theme="light"] .hero-grid {

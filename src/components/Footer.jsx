@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 export default function Footer() {
   return (
-    <footer className="w-full bg-bg-base border-t border-border">
+    <footer className="w-full bg-bg-footer">
       
       <div className="h-px w-full bg-accent-gold opacity-50"></div>
 

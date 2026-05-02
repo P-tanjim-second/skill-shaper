@@ -33,6 +33,7 @@ const config = {
           card: "var(--color-bg-card)",
           elevated: "var(--color-bg-elevated)",
           subtle: "var(--color-bg-subtle)",
+          footer: "var(--color-bg-footer)",
         },
         accent: {
           gold: "var(--color-accent-gold)",
