@@ -1,10 +1,22 @@
 'use client'
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import CourseCard from '@/components/CourseCard';
 import { SearchField } from '@heroui/react';
 
 const LEVELS = ['All', 'Beginner', 'Intermediate', 'Advanced'];
+
+const filtering = (activeLevel, courses, search) => {
+    if (search.trim() !== '') {
+        return courses.filter(course => course.title.toLowerCase().includes(search.trim().toLowerCase()))
+    }
+    if (activeLevel === 'All') {
+        return courses
+    }
+    return courses.filter(course => course.level.toLowerCase() == activeLevel.toLowerCase())
+
+}
+
 
 export default function AllCoursesSection() {
     const [courses, setCourses] = useState([]);
@@ -21,10 +33,9 @@ export default function AllCoursesSection() {
         loadData();
     }, []);
 
-    const filteredCourses = activeLevel === 'All'  ? 
-    courses : 
-    courses.filter(course => course.level.toLowerCase() == activeLevel.toLowerCase())
-    ;
+    const filteredCourses = useMemo(() => {
+        return filtering(activeLevel, courses, search)
+    }, [activeLevel, courses, search]);
 
     return (
         <section
@@ -48,8 +59,15 @@ export default function AllCoursesSection() {
                     <SearchField fullWidth name="search">
                         <SearchField.Group className=" h-12 rounded-lg bg-white/5 px-4 transition-all duration-200  focus-within:shadow-lg focus-within:shadow-amber-400/30 focus-within:ring-1 focus-within:ring-accent-gold/60">
                             <SearchField.SearchIcon />
-                            <SearchField.Input placeholder="Search courses by title..." className="bg-transparent outline-none"/>
-                            <SearchField.ClearButton />
+                            <SearchField.Input placeholder="Search courses by title..." className="bg-transparent outline-none" onChange={(e) => {
+                                setSearch(e.target.value)
+                                setActiveLevel('')
+                                e.target.value === '' && setActiveLevel('All')
+                                }} value={search}/>
+                            <SearchField.ClearButton onClick={() => {
+                                setSearch('')
+                                setActiveLevel('All')
+                            }}/>
                         </SearchField.Group>
                     </SearchField>
                 </div>
@@ -60,7 +78,10 @@ export default function AllCoursesSection() {
                         return (
                             <button
                                 key={level}
-                                onClick={() => setActiveLevel(level)}
+                                onClick={() => {
+                                    setActiveLevel(level)
+                                    setSearch('')
+                                }}
                                 className="px-5 h-12 rounded-xl font-semibold cursor-pointer"
                                 style={{
                                     background: isActive
