@@ -9,7 +9,7 @@ const DetailsImageSkeleton = ({ src, alt, className, ...props }) => {
         <div className="relative w-full h-full overflow-hidden">
             {/* Skeleton Loader */}
             <div
-                className={`absolute inset-0 z-10 bg-gray-500 transition-opacity duration-500 pointer-events-none ${
+                className={`absolute inset-0 z-10 bg-gray-500 transition-opacity rounded-2xl overflow-hidden duration-500 pointer-events-none ${
                     isLoaded ? 'opacity-0' : 'opacity-100'
                 }`}
                 style={{

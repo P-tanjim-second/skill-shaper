@@ -47,7 +47,7 @@
     "rating": 4.6,
     "level": "Intermediate",
     "description": "A deep dive into SEO, social media algorithms, and high-conversion ad copywriting for the modern web.",
-    "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800",
+    "image": "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&q=80&w=800",
     "category": "Business",
     "studentsEnrolled": 67100
   },
@@ -68,7 +68,7 @@
     "id": 6,
     "title": "Mobile App Development with Flutter",
     "instructor": "Kim Nguyen",
-    "instructorImage": "https://images.unsplash.com/photo-1567532939604-b6c5b0ad2e01?auto=format&fit=crop&q=80&w=200",
+    "instructorImage": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=200",
     "duration": 28,
     "rating": 4.8,
     "level": "Intermediate",
@@ -125,7 +125,7 @@
     "rating": 4.4,
     "level": "Beginner",
     "description": "Understand market cycles, technical analysis, and risk management strategies for stocks and commodities.",
-    "image": "https://images.unsplash.com/photo-1611974717484-9357497495b7?auto=format&fit=crop&q=80&w=800",
+    "image": "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=800",
     "category": "Finance",
     "studentsEnrolled": 95600
   }

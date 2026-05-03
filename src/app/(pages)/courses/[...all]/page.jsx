@@ -5,7 +5,6 @@ import {
   Check,
   Users,
 } from 'lucide-react';
-import ImageWithSkeleton from '@/components/ImageSkeleton';
 import SidebarCard from './components/SidebarCard';
 import CurriculumModule from './components/CurriculumModule';
 import DetailsImageSkeleton from './components/DetailsImageSkeleton';
@@ -59,33 +58,30 @@ const course = {
 
 const CourseDetailsPage = async ({params}) => {
     const urlArr = await params;
-    const [title, id] = urlArr.all
-    console.log(id)
+    const [_, id] = urlArr.all;
+    const allCourse = await fetch(`${process.env.BASE_WEB_URL}/coursesData.json`);
+    const courses = await allCourse.json();
+    const dynamicCourse = courses.find(cr => cr.id == id);
+    console.log(dynamicCourse)
     return (
     <div
-      className="min-h-screen"
-      style={{ background: 'var(--color-bg-base)' }}
+      className="min-h-screen bg-bg-base"
     >
       <div
-        className="mx-auto px-6 py-10 "
-        style={{ maxWidth: '1100px' }}
+        className="mx-auto px-6 py-10 max-w-275"
       >
-        {/* ── Two-column layout ── */}
         <div
           className="flex flex-col lg:flex-row gap-8 items-start relative" 
         >
-          {/* ── LEFT COLUMN ── */}
           <div className="flex flex-col gap-8 flex-1 overflow-hidden">
 
-            {/* Hero image */}
-            <div className="relative rounded-2xl overflow-hidden" style={{ height: '340px' }}>
+            <div className="relative rounded-2xl overflow-hidden h-85">
               <DetailsImageSkeleton
-                src={course.heroImage}
-                alt={course.title}
+                src={dynamicCourse.image}
+                alt={dynamicCourse.title}
                 className={"w-full h-full object-cover"}
                 fill
               />
-              {/* dark gradient overlay */}
               <div
                 className="absolute inset-0"
                 style={{
@@ -93,114 +89,86 @@ const CourseDetailsPage = async ({params}) => {
                     'linear-gradient(to top, rgba(7,7,15,0.55) 0%, transparent 55%)',
                 }}
               />
-              {/* Badge */}
               <div className="absolute top-4 left-4">
                 <div
-                  className="inline-flex items-center gap-2 px-3 py-1 rounded-full
-                              border font-family-sans font-semibold text-accent-teal"
-                  style={{
-                    fontSize: 'var(--text-label)',
-                    letterSpacing: '0.12em',
-                    background: 'rgba(45,212,191,0.10)',
-                    borderColor: 'rgba(45,212,191,0.30)',
-                  }}
+                  className={`inline-flex items-center gap-2 px-3 py-1 rounded-full
+                              border font-family-sans font-semibold text-accent-teal 
+                              text-label tracking-label bg-[rgba(45,212,191,0.10)] border-[rgba(45,212,191,0.30)]`}
                 >
                   <span
                     className="w-1.5 h-1.5 rounded-full shrink-0"
                     style={{ background: 'var(--color-accent-teal)' }}
                   />
-                  {course.badge}
+                  {dynamicCourse.category}
                 </div>
               </div>
             </div>
 
-            {/* Course title */}
             <div className="flex flex-col gap-4">
               <h1
-                className="font-family-display font-bold text-tx-primary"
-                style={{
-                  fontSize: 'var(--text-heading)',
-                  letterSpacing: 'var(--tracking-tight)',
-                  lineHeight: 1.15,
-                }}
+                className="font-family-display font-bold text-tx-primary text-heading tracking-tight leading-[1.15]"
               >
-                {course.title}
+                {dynamicCourse.title}
               </h1>
 
-              {/* Instructor + meta row */}
               <div className="flex items-center gap-4 flex-wrap">
-                {/* Avatar + name */}
                 <div className="flex items-center gap-2.5">
                   <div className='w-9 h-9 rounded-full overflow-hidden'>
                     <DetailsImageSkeleton
-                    src={course.instructor.avatar}
-                    alt={course.instructor.name}
+                    src={dynamicCourse.instructorImage}
+                    alt={dynamicCourse.instructor}
                     className="rounded-full overflow-hidden border border-border object-cover"
                     fill
                   />
                   </div>
                   <div>
                     <p
-                      className="font-family-sans font-semibold text-tx-primary leading-none mb-0.5"
-                      style={{ fontSize: 'var(--text-small)' }}
+                      className="font-family-sans font-semibold text-tx-primary leading-none mb-0.5 text-small"
                     >
-                      {course.instructor.name}
+                      {dynamicCourse.instructor}
                     </p>
                     <p
-                      className="font-family-body text-tx-tertiary leading-none"
-                      style={{ fontSize: 'var(--text-small)' }}
+                      className="font-family-body text-tx-tertiary leading-none text-small"
                     >
                       {course.instructor.role}
                     </p>
                   </div>
                 </div>
-
-                {/* Divider dot */}
                 <span className="w-1 h-1 rounded-full bg-tx-tertiary" />
 
-                {/* Rating */}
                 <div className="flex items-center gap-1.5">
                   <Star size={14} className="text-accent-gold fill-accent-gold" />
                   <span
-                    className="font-family-mono font-medium text-tx-primary"
-                    style={{ fontSize: 'var(--text-small)' }}
+                    className="font-family-mono font-medium text-tx-primary text-small"
                   >
-                    {course.rating}
+                    {dynamicCourse.rating}
                   </span>
                   <span
-                    className="font-family-body text-tx-tertiary"
-                    style={{ fontSize: 'var(--text-small)' }}
+                    className="font-family-body text-tx-tertiary text-small"
                   >
-                    ({course.ratingCount.toLocaleString()})
+                    ({dynamicCourse.studentsEnrolled})
                   </span>
                 </div>
-
-                {/* Divider dot */}
                 <span className="w-1 h-1 rounded-full bg-tx-tertiary" />
 
-                {/* Enrolled */}
                 <div className="flex items-center gap-1.5">
                   <Users size={13} className="text-tx-tertiary" />
                   <span
-                    className="font-family-body text-tx-secondary"
-                    style={{ fontSize: 'var(--text-small)' }}
+                    className="font-family-body text-tx-secondary text-small"
                   >
-                    {course.enrolled.toLocaleString()}
+                    {dynamicCourse.studentsEnrolled.toLocaleString()}
                     <span className="text-tx-tertiary"> enrolled</span>
                   </span>
                 </div>
               </div>
 
-              {/* Description */}
               <p
-                className="font-family-body text-tx-secondary"
-                style={{ fontSize: 'var(--text-body)', lineHeight: 'var(--leading-body)' }}
+                className="font-family-body text-tx-secondary text-body leading-body"
               >
-                {course.description}
+                {dynamicCourse.description}
               </p>
             </div>
 
-            {/* Gold divider */}
             <div
               className="h-px w-full"
               style={{
@@ -209,13 +177,11 @@ const CourseDetailsPage = async ({params}) => {
               }}
             />
 
-            {/* ── What you'll learn ── */}
             <div className="flex flex-col gap-4">
               <h2
-                className="font-family-sans font-bold text-tx-primary"
-                style={{ fontSize: 'var(--text-title)', letterSpacing: 'var(--tracking-tight)' }}
+                className="font-family-sans font-bold text-tx-primary text-title tracking-tight"
               >
-                What youll learn
+                What you&apos;ll learn
               </h2>
               <div className="grid grid-cols-2 gap-x-6 gap-y-3">
                 {course.learnings.map((item) => (
@@ -225,8 +191,7 @@ const CourseDetailsPage = async ({params}) => {
                       className="text-accent-gold mt-0.5 shrink-0"
                     />
                     <span
-                      className="font-family-body text-tx-secondary"
-                      style={{ fontSize: 'var(--text-body)', lineHeight: 1.5 }}
+                      className="font-family-body text-tx-secondary text-body leading-normal"
                     >
                       {item}
                     </span>
@@ -235,7 +200,6 @@ const CourseDetailsPage = async ({params}) => {
               </div>
             </div>
 
-            {/* Gold divider */}
             <div
               className="h-px w-full"
               style={{
@@ -244,11 +208,9 @@ const CourseDetailsPage = async ({params}) => {
               }}
             />
 
-            {/* ── Curriculum ── */}
             <div className="flex flex-col gap-4">
               <h2
-                className="font-family-sans font-bold text-tx-primary"
-                style={{ fontSize: 'var(--text-title)', letterSpacing: 'var(--tracking-tight)' }}
+                className="font-family-sans font-bold text-tx-primary text-title tracking-tight"
               >
                 Curriculum
               </h2>
@@ -261,11 +223,10 @@ const CourseDetailsPage = async ({params}) => {
 
           </div>
 
-          {/* ── RIGHT SIDEBAR ── */}
           <div
             className="shrink-0 sticky top-25 w-full lg:w-auto lg:flex-[0.5]"
           >
-            <SidebarCard course={course} />
+            <SidebarCard course={course} dynamicCourse={dynamicCourse}/>
           </div>
         </div>
       </div>
