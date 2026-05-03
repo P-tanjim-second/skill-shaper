@@ -8,7 +8,7 @@ const ImageWithSkeleton = ({ src, alt, className, ...props }) => {
 
     return (
         <>
-            <div className={`absolute inset-0 z-10 bg-gray-400 transition-opacity duration-500 ${
+            <div className={`absolute inset-0 z-10 bg-gray-500 transition-opacity duration-500 ${
                 isLoaded ? 'opacity-0 pointer-events-none' : 'opacity-100'
             }`}>
                 <span

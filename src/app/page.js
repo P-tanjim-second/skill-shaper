@@ -3,6 +3,7 @@ import Hero from "@/components/Hero";
 import Instructor from "@/components/Instructor";
 import LearningTips from "@/components/LearningTips";
 import Slider from "@/components/Slider";
+import TreadingNewReleases from "@/components/TreadingNewReleases";
 
 export default function HomePage() {
   return (
@@ -12,6 +13,7 @@ export default function HomePage() {
       <Course></Course>
       <LearningTips></LearningTips>
       <Instructor></Instructor>
+      <TreadingNewReleases></TreadingNewReleases>
     </>
   )
 }

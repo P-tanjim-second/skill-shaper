@@ -9,7 +9,8 @@
     "level": "Beginner",
     "description": "Learn full-stack web development from scratch, covering HTML, CSS, JavaScript, and modern frameworks.",
     "image": "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&q=80&w=800",
-    "category": "Development"
+    "category": "Development",
+    "studentsEnrolled": 125430
   },
   {
     "id": 2,
@@ -21,7 +22,8 @@
     "level": "Advanced",
     "description": "Master predictive modeling, neural networks, and the ethical implementation of AI in enterprise environments.",
     "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800",
-    "category": "Data Science"
+    "category": "Data Science",
+    "studentsEnrolled": 45200
   },
   {
     "id": 3,
@@ -33,7 +35,8 @@
     "level": "Beginner",
     "description": "Design beautiful, user-centric interfaces. Covers wireframing, prototyping, and high-fidelity mockups in Figma.",
     "image": "https://images.unsplash.com/photo-1586717791821-3f44a563eb4c?auto=format&fit=crop&q=80&w=800",
-    "category": "Design"
+    "category": "Design",
+    "studentsEnrolled": 89320
   },
   {
     "id": 4,
@@ -45,7 +48,8 @@
     "level": "Intermediate",
     "description": "A deep dive into SEO, social media algorithms, and high-conversion ad copywriting for the modern web.",
     "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800",
-    "category": "Business"
+    "category": "Business",
+    "studentsEnrolled": 67100
   },
   {
     "id": 5,
@@ -57,7 +61,8 @@
     "level": "Intermediate",
     "description": "Protect networks from modern threats by implementing Zero Trust architecture and ethical hacking techniques.",
     "image": "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=800",
-    "category": "IT & Security"
+    "category": "IT & Security",
+    "studentsEnrolled": 34500
   },
   {
     "id": 6,
@@ -69,7 +74,8 @@
     "level": "Intermediate",
     "description": "Build high-performance, cross-platform mobile applications for iOS and Android using a single codebase.",
     "image": "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&q=80&w=800",
-    "category": "Development"
+    "category": "Development",
+    "studentsEnrolled": 56890
   },
   {
     "id": 7,
@@ -81,7 +87,8 @@
     "level": "Beginner",
     "description": "Go beyond 'point and shoot.' Learn lighting, composition, and post-processing to tell stories through your lens.",
     "image": "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&q=80&w=800",
-    "category": "Creative Arts"
+    "category": "Creative Arts",
+    "studentsEnrolled": 23450
   },
   {
     "id": 8,
@@ -93,19 +100,21 @@
     "level": "Advanced",
     "description": "Essential skills for new managers, focusing on emotional intelligence, conflict resolution, and remote team building.",
     "image": "https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&q=80&w=800",
-    "category": "Business"
+    "category": "Business",
+    "studentsEnrolled": 18900
   },
   {
     "id": 9,
     "title": "Game Development with Unreal Engine 5",
     "instructor": "Dave Miller",
-    "": "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80&w=200",
+    "instructorImage": "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80&w=200",
     "duration": 45,
     "rating": 4.7,
     "level": "Intermediate",
     "description": "Create immersive 3D environments and gameplay mechanics using Blueprints and C++ in Unreal Engine 5.",
     "image": "https://images.unsplash.com/photo-1552820728-8b83bb6b773f?auto=format&fit=crop&q=80&w=800",
-    "category": "Development"
+    "category": "Development",
+    "studentsEnrolled": 41200
   },
   {
     "id": 10,
@@ -117,6 +126,7 @@
     "level": "Beginner",
     "description": "Understand market cycles, technical analysis, and risk management strategies for stocks and commodities.",
     "image": "https://images.unsplash.com/photo-1611974717484-9357497495b7?auto=format&fit=crop&q=80&w=800",
-    "category": "Finance"
+    "category": "Finance",
+    "studentsEnrolled": 95600
   }
 ]

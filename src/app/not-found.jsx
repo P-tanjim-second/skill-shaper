@@ -234,10 +234,10 @@ export default function NotFound() {
                     <div className="flex items-center gap-3 flex-wrap justify-center">
                         <Link href="/">
                             <button
-                                className="inline-flex items-center gap-2.5 px-6 py-3 rounded-full
+                                className={`inline-flex items-center gap-2.5 px-6 py-3 rounded-full
                          bg-accent-gold text-bg-base font-sans font-semibold
                          hover:brightness-110 hover:scale-[1.03]
-                         transition-all duration-200"
+                         transition-all duration-200`}
                                 style={{ fontSize: '14px' }}
                             >
                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
