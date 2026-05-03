@@ -7,7 +7,7 @@ const TreadingNewReleases = async () => {
     const trendingCourse = courses.filter(course => course.level == "Advanced" || course.level == "Intermediate")
 
     return (
-        <section className='w-11/13 min-h-screen py-24 px-6 mx-auto space-y-4'>
+        <section className='w-11/13 min-h-dvh pt-24 px-6 mx-auto space-y-4'>
             <div className="hero-pill animate-fade-up" style={{ animationDelay: '0ms' }}>
                 <span className="pill-dot" aria-hidden="true" />
                 <span className="font-sans font-semibold tracking-label uppercase text-label text-accent-gold">
