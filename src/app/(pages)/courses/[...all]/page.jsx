@@ -5,6 +5,8 @@ import {
   Check,
   Users,
 } from 'lucide-react';
+import { promises as fs } from 'fs';
+import path from 'path';
 import SidebarCard from './components/SidebarCard';
 import CurriculumModule from './components/CurriculumModule';
 import DetailsImageSkeleton from './components/DetailsImageSkeleton';
@@ -52,8 +54,11 @@ const course = {
 const CourseDetailsPage = async ({ params }) => {
   const urlArr = await params;
   const [_, id] = urlArr.all;
-  const allCourse = await fetch(`${process.env.BASE_WEB_URL}/coursesData.json`);
-  const courses = await allCourse.json();
+  
+  const filePath = path.join(process.cwd(), 'public', 'coursesData.json');
+  const fileData = await fs.readFile(filePath, 'utf8');
+  const courses = JSON.parse(fileData);
+  
   const dynamicCourse = courses.find(cr => cr.id == id);
 
   const session = await auth.api.getSession({

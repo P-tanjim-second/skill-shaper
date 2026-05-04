@@ -94,6 +94,10 @@
   --radius-lg: 16px;
   --radius-xl: 20px;
   --radius-full: 9999px;
+
+  --spacing-120: 30rem;
+  --spacing-11\/13: 84.6153846%;
+  --scale-101: 1.01;
 }
 
 *,

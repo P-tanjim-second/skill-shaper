@@ -1,9 +1,11 @@
-import '../app/styles/carousel.css'
+import { promises as fs } from 'fs';
+import path from 'path';
 import CarouselCard from './CarouselCard';
 
 const TreadingNewReleases = async () => {
-    const allCourse = await fetch(`${process.env.BASE_WEB_URL}/coursesData.json`) 
-    const courses = await allCourse.json();
+    const filePath = path.join(process.cwd(), 'public', 'coursesData.json');
+    const fileData = await fs.readFile(filePath, 'utf8');
+    const courses = JSON.parse(fileData);
     const trendingCourse = courses.filter(course => course.level == "Advanced" || course.level == "Intermediate")
 
     return (

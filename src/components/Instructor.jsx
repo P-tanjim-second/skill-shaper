@@ -1,8 +1,11 @@
 import ImageWithSkeleton from "./ImageSkeleton";
+import { promises as fs } from 'fs';
+import path from 'path';
 
 const Instructor = async () => {
-    const instructorsPromise = await fetch(`${process.env.BASE_WEB_URL}/topInstructor.json`);
-    const instructors = await instructorsPromise.json();
+    const filePath = path.join(process.cwd(), 'public', 'topInstructor.json');
+    const fileData = await fs.readFile(filePath, 'utf8');
+    const instructors = JSON.parse(fileData);
 
     return (
         <section className="w-full bg-bg-base py-24 px-6">

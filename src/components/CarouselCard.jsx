@@ -6,64 +6,57 @@ import { createSlug } from '@/utilits/createSlug';
 export default function CarouselCard({ course }) {
     return (
 
-        <article
-            className={`card
-        group relative w-full
-        overflow-hidden
-        bg-bg-card
-        shadow-card
-        hover:shadow-gold
-        hover:-translate-y-1`}
-        >
-            <Link href={`/courses/${createSlug(course.title)}/${course.id}`}>
-                <ImageWithSkeleton
-                    src={course.image}
-                    alt={course.title}
-                    fill
-                    className={`
-          object-cover object-center
-          scale-100 group-hover:scale-105
-          duration-700
-        `}
-                    priority
-                />
+        <article className="card group">
+            <Link href={`/courses/${createSlug(course.title)}/${course.id}`} className="block w-full h-full relative">
+                <div className="absolute inset-0 z-0">
+                    <ImageWithSkeleton
+                        src={course.image}
+                        alt={course.title}
+                        fill
+                        sizes="(max-width: 768px) 100vw, 320px"
+                        className="object-cover transition-transform duration-700 group-hover:scale-110"
+                        priority
+                    />
+                    {/* Gradient Overlay */}
+                    <div className="absolute inset-0 bg-linear-to-t from-black/90 via-black/40 to-transparent z-10" />
+                </div>
 
-                <div
-                    className={`absolute inset-0 bg-linear-to-t from-black/80 via-black/35 to-black/10`}
-                />
-
-                <div
-                    className="
-          absolute inset-0
-          bg-radial-[circle_at_top_right]
-          from-accent-gold/25 via-transparent to-transparent
-          opacity-70
-        "
-                />
-
-                <div className='absolute inset-0 group text-left font-family-sans flex flex-col justify-between px-3 py-3'>
-                    <div className='px-2 py-0.5 text-small text-[#ff0073] font-bold bg-[#aa1b5b7a] uppercase h-fit w-fit rounded-full'>
-                        🔥 {course.level}
+                <div className="relative z-20 h-full flex flex-col justify-between p-6">
+                    <div className="flex justify-between items-start">
+                        <div className="px-3 py-1 text-[10px] font-bold bg-accent-gold/20 text-accent-gold border border-accent-gold/30 uppercase tracking-widest rounded-full backdrop-blur-md">
+                            {course.level}
+                        </div>
+                        <div className="p-2 rounded-full bg-white/10 backdrop-blur-md border border-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                                <path d="M5 12h14M12 5l7 7-7 7" />
+                            </svg>
+                        </div>
                     </div>
 
-                    <h4 style={{ color: "white" }} className='tracking-tight leading-hero font-semibold'>
-                        {
-                            course.title.length >= 4 ? <>
-                                {course.title.split(' ').slice(0, 4).join(' ')}
-                                <br />
-                                {course.title.split(' ').slice(4).join(' ')}
-                            </>
-                                : course.title
-                        }
-                    </h4>
-                    <div className='space-y-1'>
-                        <p className='text-gray-400 leading-hero text-small'><span className='text-white font-family-display'>{course.studentsEnrolled}</span> students enrolled this <br /> week</p>
+                    <div className="space-y-4">
+                        <div className="space-y-2">
+                            <span className="text-accent-gold text-[10px] font-bold uppercase tracking-widest block opacity-80">
+                                {course.category}
+                            </span>
+                            <h4 className="text-white text-xl font-bold leading-tight font-family-sans group-hover:text-accent-gold transition-colors duration-300">
+                                {course.title}
+                            </h4>
+                        </div>
 
-                        <ProgressBar aria-label="Loading progress" className="w-50" value={course.studentsEnrolled.toString().slice(0, 2)} color='warning' size='sm'>
-                            <ProgressBar.Track>
-                                <ProgressBar.Fill />
-                            </ProgressBar.Track>
-                        </ProgressBar>
+                        <div className="space-y-3 pt-4 border-t border-white/10">
+                            <div className="flex items-center justify-between text-white/60 text-[11px] font-family-mono">
+                                <span>{course.studentsEnrolled.toLocaleString()} Enrolled</span>
+                                <span className="text-accent-gold">{Math.floor(course.studentsEnrolled / 1000)}% Complete</span>
+                            </div>
+                            
+                            <ProgressBar 
+                                aria-label="Course Popularity" 
+                                value={Math.min(100, (course.studentsEnrolled / 150000) * 100)} 
+                                color="warning" 
+                                size="sm" 
+                                className="opacity-80"
+                            />
+                        </div>
                     </div>
                 </div>
             </Link>

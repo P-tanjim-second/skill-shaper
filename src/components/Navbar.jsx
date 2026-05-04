@@ -80,6 +80,7 @@ const Navbar = () => {
                                         className={'rounded-full bg-gray-500 object-cover'}
                                         onError={() => setImgError(true)}
                                         fill
+                                        sizes="40px"
                                     ></ImageWithSkeleton>
                                 </div>
                                 <div className='flex gap-3 items-center justify-center'>
@@ -132,6 +133,7 @@ const Navbar = () => {
                                                 className={'rounded-full bg-gray-500 object-cover'}
                                                 onError={() => setImgError(true)}
                                                 fill
+                                                sizes="40px"
                                             ></ImageWithSkeleton>
                                         </div>
                                         <div>

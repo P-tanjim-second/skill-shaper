@@ -1,10 +1,13 @@
 import Link from 'next/link';
 import '../app/styles/hero.css'
 import CourseCard from './CourseCard';
+import { promises as fs } from 'fs';
+import path from 'path';
 
 const Course = async () => {
-    const coursesDataPromise = await fetch(`${process.env.BASE_WEB_URL}/coursesData.json`);
-    const coursesData = await coursesDataPromise.json();
+    const filePath = path.join(process.cwd(), 'public', 'coursesData.json');
+    const fileData = await fs.readFile(filePath, 'utf8');
+    const coursesData = JSON.parse(fileData);
     const demandedCourse = coursesData.filter(course => course.rating >= 4.9).slice(0, 3);
 
     return (
