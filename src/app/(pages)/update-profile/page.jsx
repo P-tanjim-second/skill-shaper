@@ -80,7 +80,7 @@ export default function UpdateProfile() {
             <button
                 type="submit"
                 disabled={loading}
-                className="w-full h-12 rounded-xl bg-accent-gold text-black font-semibold flex items-center justify-center gap-2 hover:brightness-110 active:scale-[0.98] transition"
+                className="w-full h-12 cursor-pointer rounded-xl bg-accent-gold text-black font-semibold flex items-center justify-center gap-2 hover:brightness-110 active:scale-[0.98] transition"
             >
                 {loading ? 'Saving...' : 'Save Changes'}
                 <ArrowRight size={16} />

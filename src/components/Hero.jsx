@@ -74,7 +74,7 @@ export default function HeroSection() {
                     className="flex items-center gap-4 flex-wrap justify-center animate-fade-up"
                     style={{ animationDelay: '300ms' }}
                 >
-                    <Link href="/course">
+                    <Link href="/courses">
                         <button className="hero-btn-primary group overflow-hidden relative font-sans font-semibold">
                             <span
                                 className="absolute inset-0 -translate-x-full bg-linear-to-r from-transparent via-white/60 to-transparent transition-transform duration-100 group-hover:animate-[shimmer_0.8s]"

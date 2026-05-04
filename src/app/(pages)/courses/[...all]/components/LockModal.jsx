@@ -30,7 +30,7 @@ export default function LockModal({ isOpen, courseTitle,courseId }) {
                 </div>
 
                 <h2 className="mt-5 text-xl font-bold text-white">
-                    This content is for Sign Up members on
+                    This content is for Sign Up members only
                 </h2>
 
                 <p className="mt-3 text-sm text-white/60 leading-relaxed">
