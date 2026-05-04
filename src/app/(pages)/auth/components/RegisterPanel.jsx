@@ -45,6 +45,13 @@ const RegisterPanel = () => {
 
     };
 
+    const handleGoogleSign = async () => {
+        const data = await authClient.signIn.social({
+            provider: "google",
+        });
+        console.log(data)
+    }
+
     return (
         <div className="flex flex-1 items-center justify-center px-8 py-14 min-h-screen bg-bg-elevated">
             <div className="w-full max-w-110 flex flex-col gap-8">
@@ -164,6 +171,8 @@ const RegisterPanel = () => {
                         </div>
 
                         <button
+                            type="button"
+                            onClick={handleGoogleSign}
                             className="w-full cursor-pointer h-13 rounded-xl font-family-sans font-medium text-body bg-bg-card border border-border text-tx-primary flex items-center justify-center gap-3 hover:border-border-hover hover:bg-bg-subtle transition-all duration-200"
                         >
                             <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
