@@ -38,8 +38,8 @@ const Navbar = () => {
 
                 <div className='flex items-center gap-7 text-small'>
                     <ThemeToggle></ThemeToggle>
-                    <button className='px-4  py-1.5 rounded-2xl border-[0.5] border-gray-700 hover:border-accent-gold hover:text-accent-gold cursor-pointer'>Login</button>
-                    <button className="relative overflow-hidden px-4 py-1.5 bg-accent-gold text-black font-medium rounded-md group hover:shadow-glow hover:translate-y-[-0.8px] cursor-pointer">
+                    <Link href={'/auth/login'}><button className='px-4  py-1.5 rounded-2xl border-[0.5] border-gray-700 hover:border-accent-gold hover:text-accent-gold cursor-pointer'>Login</button></Link>
+                    <Link href={'/auth/register'}><button className="relative overflow-hidden px-4 py-1.5 bg-accent-gold text-black font-medium rounded-md group hover:shadow-glow hover:translate-y-[-0.8px] cursor-pointer">
                         <span
                             className="absolute inset-0 -translate-x-full bg-linear-to-r from-transparent via-white/60 to-transparent transition-transform duration-100 group-hover:animate-[shimmer_0.8s]"
                             style={{
@@ -47,7 +47,7 @@ const Navbar = () => {
                             }}
                         />
                         <span className="relative">Register</span>
-                    </button>
+                    </button></Link>
                 </div>
 
             </div>
