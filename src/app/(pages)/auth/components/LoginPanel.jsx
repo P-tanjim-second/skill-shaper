@@ -1,13 +1,15 @@
 'use client'
-import { authClient } from "@/lib/auth-client";
+import { authClient, useSession } from "@/lib/auth-client";
 import { Button, Description, FieldError, Form, Input, Label, TextField, toast } from "@heroui/react";
 import { ArrowRight, Check, Eye, EyeOff } from "lucide-react";
 import Link from "next/link";
-import { redirect } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 export default function RightPanel() {
-    const [showPass, setShowPass] = useState(false)
+    const [showPass, setShowPass] = useState(false);
+    const router = useRouter();
+    const { refetch } = useSession()
 
     const onSubmit = async (e) => {
         e.preventDefault();
@@ -18,12 +20,17 @@ export default function RightPanel() {
 
         if (data) {
             toast.success("Login Successful");
-            redirect('/');
+            await refetch();
+            router.replace('/');
         }
 
         if (error) {
-            toast.danger("Something went wrong. Login Failed")
-            console.log("error", error.message)
+            if (error.code === "INVALID_CREDENTIALS") {
+                toast.danger("Email or password is incorrect");
+            } else {
+                toast.danger("Something went wrong. Login Failed");
+                console.log("error", error.message);
+            }
         }
     };
 
@@ -50,34 +57,15 @@ export default function RightPanel() {
                                 isRequired
                                 name="email"
                                 type="email"
-                                validate={(value) => {
-                                    if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(value)) {
-                                        return "Please enter a valid email address";
-                                    }
-                                    return null;
-                                }}
                             >
                                 <Label className="text-tx-secondary font-family-mono text-label">Email</Label>
                                 <Input placeholder="john@example.com" className={'h-12 focus-within:ring-1 focus-within:ring-accent-gold'} />
-                                <FieldError />
                             </TextField>
                             <TextField
                                 isRequired
                                 minLength={8}
                                 name="password"
                                 type={`${showPass ? 'text' : 'password'}`}
-                            // validate={(value) => {
-                            //     if (value.length < 8) {
-                            //         return "Password must be at least 8 characters";
-                            //     }
-                            //     if (!/[A-Z]/.test(value)) {
-                            //         return "Password must contain at least one uppercase letter";
-                            //     }
-                            //     if (!/[0-9]/.test(value)) {
-                            //         return "Password must contain at least one number";
-                            //     }
-                            //     return null;
-                            // }}
                             >
                                 <Label className="text-tx-secondary font-family-mono text-label">Password</Label>
                                 <div className="relative">

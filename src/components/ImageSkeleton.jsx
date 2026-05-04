@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import Image from 'next/image';
 
-const ImageWithSkeleton = ({ src, alt, className, ...props }) => {
+const ImageWithSkeleton = ({ src, alt, className, onError,...props }) => {
     const [isLoaded, setIsLoaded] = useState(false);
 
     return (
@@ -21,6 +21,7 @@ const ImageWithSkeleton = ({ src, alt, className, ...props }) => {
                 alt={alt}
                 className={className}
                 onLoad={() => setIsLoaded(true)}
+                onError={onError}
                 {...props}
             />
         </>
