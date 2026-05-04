@@ -2,6 +2,7 @@ import "./globals.css";
 import { fraunces, dmSans, jetbrainsMono, cabinetGrotesk } from "@/app/font/fonts";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { Toast } from "@heroui/react";
 
 export const metadata = {
   title: "Skill Sphere",
@@ -22,6 +23,7 @@ export default function RootLayout({ children }) {
       `}
     >
       <body className="min-h-full font-family-body flex flex-col">
+        <Toast.Provider />
         <Navbar></Navbar>
         {children}
         <Footer></Footer>

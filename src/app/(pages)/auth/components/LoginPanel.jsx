@@ -1,21 +1,30 @@
 'use client'
-import { Button, Description, FieldError, Form, Input, Label, TextField } from "@heroui/react";
+import { authClient } from "@/lib/auth-client";
+import { Button, Description, FieldError, Form, Input, Label, TextField, toast } from "@heroui/react";
 import { ArrowRight, Check, Eye, EyeOff } from "lucide-react";
 import Link from "next/link";
+import { redirect } from "next/navigation";
 import { useState } from "react";
 
 export default function RightPanel() {
     const [showPass, setShowPass] = useState(false)
 
-    const onSubmit = (e) => {
+    const onSubmit = async (e) => {
         e.preventDefault();
         const formData = new FormData(e.currentTarget);
-        const data = {};
-        // Convert FormData to plain object
-        formData.forEach((value, key) => {
-            data[key] = value.toString();
-        });
-        alert(`Form submitted with: ${JSON.stringify(data, null, 2)}`);
+        const userData = Object.fromEntries(formData.entries());
+
+        const { data, error } = await authClient.signIn.email(userData);
+
+        if (data) {
+            toast.success("Login Successful");
+            redirect('/');
+        }
+
+        if (error) {
+            toast.danger("Something went wrong. Login Failed")
+            console.log("error", error.message)
+        }
     };
 
     return (
@@ -57,18 +66,18 @@ export default function RightPanel() {
                                 minLength={8}
                                 name="password"
                                 type={`${showPass ? 'text' : 'password'}`}
-                                // validate={(value) => {
-                                //     if (value.length < 8) {
-                                //         return "Password must be at least 8 characters";
-                                //     }
-                                //     if (!/[A-Z]/.test(value)) {
-                                //         return "Password must contain at least one uppercase letter";
-                                //     }
-                                //     if (!/[0-9]/.test(value)) {
-                                //         return "Password must contain at least one number";
-                                //     }
-                                //     return null;
-                                // }}
+                            // validate={(value) => {
+                            //     if (value.length < 8) {
+                            //         return "Password must be at least 8 characters";
+                            //     }
+                            //     if (!/[A-Z]/.test(value)) {
+                            //         return "Password must contain at least one uppercase letter";
+                            //     }
+                            //     if (!/[0-9]/.test(value)) {
+                            //         return "Password must contain at least one number";
+                            //     }
+                            //     return null;
+                            // }}
                             >
                                 <Label className="text-tx-secondary font-family-mono text-label">Password</Label>
                                 <div className="relative">

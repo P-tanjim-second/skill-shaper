@@ -1,11 +1,11 @@
 import LeftPanel from '../components/LeftPanel';
-import RightPanel from '../components/RightPanel';
+import LoginPanel from '../components/LoginPanel';
 
 export default function LoginPage() {
     return (
         <div className="flex min-h-screen bg-bg-base">
             <LeftPanel />
-            <RightPanel />
+            <LoginPanel />
         </div>
     );
 }

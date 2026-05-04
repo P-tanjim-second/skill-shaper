@@ -1,21 +1,48 @@
 'use client'
+import { authClient } from "@/lib/auth-client";
 import { Description, FieldError, Form, Input, Label, TextField } from "@heroui/react";
 import { ArrowRight, Eye, EyeOff } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
+import { Button, toast } from "@heroui/react";
+import { redirect } from "next/navigation";
+
+const defaultPfImage = "https://images.unsplash.com/photo-1740252117013-4fb21771e7ca?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D";
 
 const RegisterPanel = () => {
     const [showPass, setShowPass] = useState(false)
 
-    const onSubmit = (e) => {
+    const onSubmit = async (e) => {
         e.preventDefault();
         const formData = new FormData(e.currentTarget);
-        const data = {};
-        // Convert FormData to plain object
-        formData.forEach((value, key) => {
-            data[key] = value.toString();
+        const userData = Object.fromEntries(formData.entries());
+
+        const { data, error } = await authClient.signUp.email({
+            ...userData,
+            image: userData.image || defaultPfImage,
         });
-        alert(`Form submitted with: ${JSON.stringify(data, null, 2)}`);
+
+        if (data) {
+            toast.success("Registration Successful");
+            redirect('/auth/login');
+        }
+
+        if (error) {
+            const msg = error.message?.toLowerCase() || ''
+
+            const emailExists =
+                msg.includes('already') ||
+                msg.includes('exists') ||
+                msg.includes('taken')
+
+            if (emailExists) {
+                toast.danger('This email already has an account.')
+                return
+            }
+
+            toast.danger("Something went wrong. Registration Failed")
+        }
+
     };
 
     return (
@@ -37,9 +64,9 @@ const RegisterPanel = () => {
                     <div className="flex flex-col gap-2">
 
                         <Form className="flex w-full flex-col gap-4" onSubmit={onSubmit}>
-                            <TextField isRequired className="w-full" name="fullName">
+                            <TextField isRequired className="w-full" name="name">
                                 <Label className="text-tx-secondary font-family-mono text-label">Full Name</Label>
-                                <Input placeholder="hablu dablu"  className={'h-12 focus-within:ring-1 focus-within:ring-accent-gold'}/>
+                                <Input placeholder="hablu dablu" className={'h-12 focus-within:ring-1 focus-within:ring-accent-gold'} />
                             </TextField>
                             <TextField
                                 isRequired
@@ -87,16 +114,17 @@ const RegisterPanel = () => {
                                 <FieldError />
                             </TextField>
                             <TextField
-                                isRequired
-                                name="url"
+                                name="image"
                                 type="url"
                                 className={'mt-10'}
                                 validate={(value) => {
-                                    const imageRegex = /\.(jpg|jpeg|png|webp|avif|gif|svg)$/i;
-                                    if (!value.match(imageRegex)) {
-                                        return "Please enter a valid image URL (jpg, png, webp, etc.)";
+                                    if (value.trim() !== '') {
+                                        const imageRegex = /\.(jpg|jpeg|png|webp|avif|gif|svg)$/i;
+                                        if (!value.match(imageRegex)) {
+                                            return "Please enter a valid image URL (jpg, png, webp, etc.)";
+                                        }
+                                        return null;
                                     }
-                                    return null;
                                 }}
                             >
                                 <Label className="text-tx-secondary font-family-mono text-label">Image URL</Label>
