@@ -3,12 +3,14 @@ import { authClient, useSession } from "@/lib/auth-client";
 import { Button, Description, FieldError, Form, Input, Label, TextField, toast } from "@heroui/react";
 import { ArrowRight, Check, Eye, EyeOff } from "lucide-react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { useSearchParams, useRouter } from "next/navigation";
 import { useState } from "react";
 
 export default function RightPanel() {
     const [showPass, setShowPass] = useState(false);
+    const searchParams = useSearchParams();
     const router = useRouter();
+    const callbackUrl = searchParams.get("callbackUrl") || "/";
     const { refetch } = useSession()
 
     const onSubmit = async (e) => {
@@ -21,11 +23,11 @@ export default function RightPanel() {
         if (data) {
             toast.success("Login Successful");
             await refetch();
-            router.replace('/');
+            router.replace(callbackUrl);
         }
 
         if (error) {
-            if (error.code === "INVALID_CREDENTIALS") {
+            if (error.code === "UNAUTHORIZED") {
                 toast.danger("Email or password is incorrect");
             } else {
                 toast.danger("Something went wrong. Login Failed");

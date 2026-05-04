@@ -8,20 +8,15 @@ import {
 import SidebarCard from './components/SidebarCard';
 import CurriculumModule from './components/CurriculumModule';
 import DetailsImageSkeleton from './components/DetailsImageSkeleton';
+import { auth } from '@/lib/auth';
+import { headers } from 'next/headers';
+import LockModal from './components/LockModal';
+import { createSlug } from '@/utilits/createSlug';
 
 const course = {
-  badge: 'WEB DEV',
-  title: 'Modern Full-Stack Web Development',
   instructor: {
-    name: 'Aarav Mehta',
     role: 'Senior Engineer @ Vercel',
-    avatar: 'https://i.pravatar.cc/40?img=8',
   },
-  rating: 4.9,
-  ratingCount: 2410,
-  enrolled: 8428,
-  description:
-    'Build production-grade apps with React, TypeScript, Node and Postgres. From design systems to deployment, youll ship a real SaaS as your capstone.',
   learnings: [
     'Architect scalable React + TypeScript apps',
     'Design REST and tRPC APIs with Node',
@@ -29,9 +24,7 @@ const course = {
     'Deploy to the edge with CI/CD pipelines',
     'Write tests that you actually trust',
   ],
-  stats: { hours: 32, lessons: 64, level: 'Intermediate' },
-  thumbnail: 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=900&q=80',
-  heroImage: 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=900&q=80',
+  stats: { lessons: 64 },
   perks: ['Certificate included', 'Lifetime access', 'Mobile friendly'],
   modules: [
     {
@@ -56,14 +49,23 @@ const course = {
 };
 
 
-const CourseDetailsPage = async ({params}) => {
-    const urlArr = await params;
-    const [_, id] = urlArr.all;
-    const allCourse = await fetch(`${process.env.BASE_WEB_URL}/coursesData.json`);
-    const courses = await allCourse.json();
-    const dynamicCourse = courses.find(cr => cr.id == id);
-    console.log(dynamicCourse)
-    return (
+const CourseDetailsPage = async ({ params }) => {
+  const urlArr = await params;
+  const [_, id] = urlArr.all;
+  const allCourse = await fetch(`${process.env.BASE_WEB_URL}/coursesData.json`);
+  const courses = await allCourse.json();
+  const dynamicCourse = courses.find(cr => cr.id == id);
+
+  const session = await auth.api.getSession({
+    headers: await headers(),
+  })
+
+  if (!session) {
+    return <LockModal isOpen={true} courseTitle={createSlug(dynamicCourse.title)} courseId={dynamicCourse.id}></LockModal>
+  }
+
+
+  return (
     <div
       className="min-h-screen bg-bg-base"
     >
@@ -71,7 +73,7 @@ const CourseDetailsPage = async ({params}) => {
         className="mx-auto px-6 py-10 max-w-275"
       >
         <div
-          className="flex flex-col lg:flex-row gap-8 items-start relative" 
+          className="flex flex-col lg:flex-row gap-8 items-start relative"
         >
           <div className="flex flex-col gap-8 flex-1 overflow-hidden">
 
@@ -115,11 +117,11 @@ const CourseDetailsPage = async ({params}) => {
                 <div className="flex items-center gap-2.5">
                   <div className='w-9 h-9 rounded-full overflow-hidden'>
                     <DetailsImageSkeleton
-                    src={dynamicCourse.instructorImage}
-                    alt={dynamicCourse.instructor}
-                    className="rounded-full overflow-hidden border border-border object-cover"
-                    fill
-                  />
+                      src={dynamicCourse.instructorImage}
+                      alt={dynamicCourse.instructor}
+                      className="rounded-full overflow-hidden border border-border object-cover"
+                      fill
+                    />
                   </div>
                   <div>
                     <p
@@ -226,7 +228,7 @@ const CourseDetailsPage = async ({params}) => {
           <div
             className="shrink-0 sticky top-25 w-full lg:w-auto lg:flex-[0.5]"
           >
-            <SidebarCard course={course} dynamicCourse={dynamicCourse}/>
+            <SidebarCard course={course} dynamicCourse={dynamicCourse} />
           </div>
         </div>
       </div>

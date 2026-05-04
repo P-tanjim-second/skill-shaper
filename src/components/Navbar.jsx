@@ -9,7 +9,7 @@ import ImageWithSkeleton from './ImageSkeleton';
 const defaultPfImage = "https://images.unsplash.com/photo-1740252117013-4fb21771e7ca?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D";
 
 const Navbar = () => {
-    const { data, isPending } = useSession();
+    const { data, isPending, refetch } = useSession();
     const [imgError, setImgError] = useState(false);
     const user = data?.user;
 
@@ -68,7 +68,10 @@ const Navbar = () => {
                                     <div className='flex gap-4 items-center justify-center'>
                                         <p className='font-family-sans'><span className='font-semibold text-tx-secondary text-small'>Welcome,</span> <span className='font-family-display text-body italic capitalize'>{user.name}</span></p>
                                         <ThemeToggle></ThemeToggle>
-                                        <button onClick={() => signOut()} className='px-4  py-1.5 rounded-2xl border-[0.5] border-gray-700 hover:border-accent-gold hover:text-accent-gold cursor-pointer'>Log Out</button>
+                                        <button onClick={() =>{
+                                            refetch()
+                                            signOut()
+                                            }} className='px-4  py-1.5 rounded-2xl border-[0.5] border-gray-700 hover:border-accent-gold hover:text-accent-gold cursor-pointer'>Log Out</button>
                                     </div>
                                 </div>
                             </div>
