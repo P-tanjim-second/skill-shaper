@@ -38,8 +38,8 @@ export default function RightPanel() {
     const handleGoogleSign = async () => {
         const data = await authClient.signIn.social({
             provider: "google",
+            callbackURL: callbackUrl
         });
-        console.log(data)
     }
 
     return (
